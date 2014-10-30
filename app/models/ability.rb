@@ -7,7 +7,7 @@ class Ability
     alias_action :index, :show, :to => :read
     alias_action :new, :to => :create
     alias_action :edit, :to => :update
-    
+
     permissions = user.permissions_for_project(project) || []
     permissions.each do |permission|
       if permission.subject_class == "all"
