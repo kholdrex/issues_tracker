@@ -1,0 +1,9 @@
+<tr>
+  <td><%= issue_list.id %></td>
+  <td><%= issue_list.tracker.name %></td>
+  <td><%= issue_list.status.name %></td>
+  <td><%= issue_list.priority.name %></td>
+  <td><%= link_to issue_list.subject, project_issue_path(@project, issue_list) %></td>
+  <td><%= link_to issue_list.assigned_to.nickname, admin_user_path(issue_list.assigned_to) if issue_list.assigned_to.present? %></td>
+  <td><%= issue_list.updated_at.strftime("%d.%m.%Y %H:%M:%S") %></td>
+</tr>

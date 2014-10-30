@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    attributes:
+      issue:
+        assigned_to: "Assigned to"
+    errors:
+      models:
+        issue:
+          attributes:
+            assigned_to:
+              blank: "Must be assigned to user"
+              inclusion: "Can't be assigned to this user"
+            subject:
+              blank: "Subject is required"
+            status:
+              blank: "Must be with a certain status"
+              inclusion: "Can't have that status"
+  create_issue: "Create Issue"

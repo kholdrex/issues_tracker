@@ -1,0 +1,6 @@
+<li>
+  <b><%= list_tracker_projects.name %>:</b>
+  <%= Project.opened_issues_with_tracker(@project, list_tracker_projects).count %>
+  открытых /
+  <%= Project.all_issues_with_tracker(@project, list_tracker_projects).count %>
+</li>

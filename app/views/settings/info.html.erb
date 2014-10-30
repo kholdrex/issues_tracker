@@ -1,0 +1,48 @@
+<h2>Настройки</h2>
+<div class="row">
+  <div class="span12" id="content">
+    <%= render partial: 'settings/settings_menu' %>
+    <div id="content-block">
+      <%= form_for(@project) do |f| %>
+          <div class="control-group">
+            <%= f.label :name, class:'control-label' %>
+            <div class="controls">
+              <%= f.text_field :name %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :description, class:'control-label' %>
+            <div class="controls">
+              <%= f.text_area :description %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :parent, class:'control-label' %>
+            <div class="controls">
+              <%= f.select :parent_id, @projects.pluck(:name, :id), { include_blank: true } %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+              <fieldset class="box tabular" id="project_trackers"><legend>Трекеры</legend>
+                <% @trackers.each do |t| %>
+                    <label class="floating">
+                      <%= check_box_tag "trackers[]", t.id, @project.trackers.include?(t) %> <%= t.name %>
+                    </label>
+                <% end %>
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+              <%= f.submit 'Сохранить' %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

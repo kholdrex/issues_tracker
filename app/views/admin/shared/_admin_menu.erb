@@ -1,0 +1,11 @@
+<ul class="nav nav-list">
+  <li class="nav-header">Администрирование</li>
+  <li><%= link_to 'На главную', admin_dashboards_path %></li>
+  <li><%= link_to 'Пользователи', admin_dashboards_path %></li>
+  <li class="<%= is_active?(['admin/roles']) %>"><%= link_to 'Роли и права доступа', admin_roles_path %></li>
+  <li><%= link_to 'Трекеры', admin_dashboards_path %></li>
+  <li><%= link_to 'Статусы задач', admin_dashboards_path %></li>
+  <li><%= link_to 'Списки задач', admin_dashboards_path %></li>
+  <li class="divider"></li>
+  <li><%= link_to 'Настройки', admin_dashboards_path %></li>
+</ul>

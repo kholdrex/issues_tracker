@@ -1,0 +1,13 @@
+<tr>
+  <td><%= members.user.email %></td>
+  <td><%= members.roles.pluck(:name).join(', ') %></td>
+  <td>
+    <%= link_to remove_member_project_settings_path(@project, member_id: members.id), method: :delete do %>
+        <i class=" icon-edit"></i> Редактировать
+    <% end %> |
+
+    <%= link_to remove_member_project_settings_path(@project, member_id: members.id), method: :delete do %>
+        <i class="icon-remove"></i> Удалить
+    <% end %>
+  </td>
+</tr>

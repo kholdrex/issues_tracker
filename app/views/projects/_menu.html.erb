@@ -1,0 +1,11 @@
+<div class="container nav-collapse" id="tab-menu">
+  <ul class="nav nav-tabs">
+    <li class="<%= is_active?(['projects', ['show']]) %>">
+      <%= link_to 'Обзор', project_path(@project) %>
+    </li>
+    <li class="<%= is_active?(['issues', ['index', 'show']]) %>"><%= link_to 'Задачи', project_issues_path(@project) %></li>
+    <li class="<%= is_active?(['issues', ['new']]) %>"><%= link_to 'Новая задача', new_project_issue_path(@project) %></li>
+    <li class="<%= is_active?(['news', ['index']]) %>"><a href="#">Новости</a></li>
+    <li class="<%= is_active?(['settings']) %>"><%= link_to 'Настройки', project_settings_path(@project) %></li>
+  </ul>
+</div>

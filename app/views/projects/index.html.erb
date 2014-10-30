@@ -1,0 +1,20 @@
+<h2>Проекты</h2>
+<div class="row">
+  <div class="span9" id="content">
+    <div id="content-block">
+      <ul id="block-menu">
+        |<li><%= link_to 'Новый проект', new_project_path %></li>|
+        <li><%= link_to 'Посмотреть все задачи', new_project_path %></li>|
+        <li><%= link_to 'Всего затрачено времени', new_project_path %></li>|
+      </ul>
+      <ul id="projects root">
+        <%= render partial: 'projects/projects_list', collection: @projects %>
+      </ul>
+    </div>
+  </div>
+  <div class="span3" id="sidebar">
+    <div id="sidebar-content">
+      <h4>Проекты</h4>
+    </div>
+  </div>
+</div>

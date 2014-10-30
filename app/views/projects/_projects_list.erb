@@ -1,0 +1,8 @@
+  <li>
+    <div class="root"><%= link_to projects_list.name, project_path(projects_list) %></div>
+    <ul class="projects">
+      <% projects_list.subprojects.each do |project| %>
+            <%= render partial: 'projects/projects_list', object: project %>
+      <% end %>
+    </ul>
+  </li>

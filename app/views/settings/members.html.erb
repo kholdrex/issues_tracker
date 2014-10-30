@@ -1,0 +1,59 @@
+<script>
+    function add_member(){
+        $.ajax({
+            type: 'POST',
+            url: "<%= add_members_project_settings_path(@project) %>",
+            data: $('#members_form').serialize(),
+            success: function(data){
+                $('.table').append(data);
+            }
+        });
+    }
+</script>
+
+<h2>Настройки</h2>
+<div class="row">
+  <div class="span12" id="content">
+    <%= render partial: 'settings/settings_menu' %>
+    <div id="content-block">
+      <form id="members_form">
+        <div class="span8">
+          <table class="table table-hover">
+            <tr><th>Пользователь</th><th>Роли</th><th></th></tr>
+            <%= render partial: 'settings/members', collection: @project.members %>
+          </table>
+        </div>
+        <div class="span3">
+          <fieldset>
+            <legend>Новый участник</legend>
+            <p>
+              <label for="principal_search">Найти пользователя или группу:</label>
+              <input id="principal_search" name="principal_search" type="text" class="autocomplete" data-value-was="">
+            </p>
+
+            <div id="principals_for_new_member">
+              <div id="principals">
+                <% @users.each do |t| %>
+                    <% unless @project.members.where(user: t).first %>
+                        <label class="floating">
+                          <%= check_box_tag "members[user_ids][]", t.id %> <%= t.email %>
+                        </label>
+                    <% end %>
+                <% end %>
+              </div>
+            </div>
+            <p>
+              Роли:
+              <% @roles.each do |t| %>
+                  <label class="floating">
+                    <%= check_box_tag "members[role_ids][]", t.id %> <%= t.name %>
+                  </label>
+              <% end %>
+            </p>
+            <p><input id="member-add-submit" name="commit" type="button" value="Добавить" onclick="add_member();"></p>
+          </fieldset>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

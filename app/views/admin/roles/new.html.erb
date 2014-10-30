@@ -1,0 +1,41 @@
+<h2>Новая роль</h2>
+<div class="row">
+  <div class="span9" id="content">
+    <div id="content-block">
+      <%= form_for([:admin, @role]) do |f| %>
+
+          <div class="control-group">
+            <%= f.label :name, class:'control-label' %>
+            <div class="controls">
+              <%= f.text_field :name %>
+            </div>
+          </div>
+
+          <div class="well well-large">
+            <h4>Проекты</h4>
+            <ul>
+              <%= render partial: 'admin/roles/permission_checkboxes', collection: @project_permissions %>
+            </ul>
+          </div>
+
+          <div class="well well-large">
+            <h4>Задачи</h4>
+            <ul>
+              <%= render partial: 'admin/roles/permission_checkboxes', collection: @issue_permissions %>
+            </ul>
+          </div>
+
+
+          <div class="control-group">
+            <div class="controls">
+              <%= f.submit 'Сохранить' %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="span3">
+    <%= render partial: 'admin/shared/admin_menu' %>
+  </div>
+</div>

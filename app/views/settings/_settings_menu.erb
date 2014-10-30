@@ -1,0 +1,10 @@
+<div class="container nav-collapse">
+  <ul class="nav nav-tabs">
+    <li class="<%= is_active?(['settings', ['info']]) %>">
+      <%= link_to 'Информация', project_settings_path(@project) %>
+    </li>
+    <li class="<%= is_active?(['settings', ['modules']]) %>"><%= link_to 'Модули', modules_project_settings_path(@project) %></li>
+    <li class="<%= is_active?(['settings', ['members']]) %>"><%= link_to 'Участники', members_project_settings_path(@project) %></li>
+    <li class="<%= is_active?(['settings', ['activities']]) %>"><%= link_to 'Действия(учет времени)', activities_project_settings_path(@project) %></li>
+  </ul>
+</div>

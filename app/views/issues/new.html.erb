@@ -1,0 +1,88 @@
+<h2>Новая задача</h2>
+<% unless @trackers.empty? %>
+    <div class="row">
+      <div class="span12" id="content">
+        <div id="content-block">
+          <%= form_for([@project, @issue]) do |f| %>
+              <div class="span4">
+
+                <div class="control-group">
+                  <%= f.label :Tracker, class:'control-label' %>
+                  <div class="controls">
+                    <%= f.select :tracker_id, @project.trackers.pluck(:name, :id) %>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <%= f.label :subject, class:'control-label' %>
+                  <div class="controls">
+                    <%= f.text_field :subject %>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <%= f.label :description, class:'control-label' %>
+                  <div class="controls">
+                    <%= f.text_area :description %>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <%= f.label :status, class:'control-label' %>
+                  <div class="controls">
+                    <%= f.select :issue_status_id, @statuses.pluck(:name, :id) %>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <%= f.label :priority, class:'control-label' %>
+                  <div class="controls">
+                    <%= f.select :priority_id, @priorities.pluck(:name, :id) %>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <%= f.label :parent, class:'control-label' %>
+                  <div class="controls">
+                    <%= f.select :parent_id, @issues.pluck(:subject, :id), { include_blank: true } %>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <%= f.label :assignee, class:'control-label' %>
+                  <div class="controls">
+                    <%= f.select :assigned_to_id, @users, { include_blank: true } %>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <div class="controls">
+                    <%= f.submit 'Сохранить' %>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="span2">
+
+                <div class="control-group">
+                  <%= f.label :start_date, class:'control-label' %>
+                  <div class="controls">
+                    <%= f.text_field :start_date, class: 'datepicker' %>
+                  </div>
+                </div>
+
+                <div class="control-group">
+                  <%= f.label :due_date, class:'control-label' %>
+                  <div class="controls">
+                    <%= f.text_field :due_date, class: 'datepicker' %>
+                  </div>
+                </div>
+
+              </div>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+<% end %>
