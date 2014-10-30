@@ -6,3 +6,12 @@ development:
   pool: 5
   username: postgres
   password:
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  database: issue_dev
+  pool: 5
+  username: postgres
+  password:
