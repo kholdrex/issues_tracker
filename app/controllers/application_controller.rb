@@ -1,7 +1,7 @@
 require 'helper_methods'
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :find_project, :is_active?, :get_errors, :pagination, :paginator, :current_member
+  helper_method :find_project, :is_active?, :get_errors, :pagination, :paginator, :current_member, :is_admin
   include HelperMethods
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
                else
                  Project.find(params[:id])
                end
+  end
+
+  def is_admin
+    current_user.is_admin?
   end
 
   def pagination

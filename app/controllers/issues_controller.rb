@@ -6,6 +6,7 @@ class IssuesController < ApplicationController
   before_action :pagination, only: [:index]
   load_and_authorize_resource
   before_filter :load_permissions
+  skip_load_resource :only => [:create]
 
   include IssuesHelper
 

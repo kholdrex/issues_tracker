@@ -1,11 +1,11 @@
 <ul class="nav nav-list">
-  <li class="nav-header">Администрирование</li>
-  <li><%= link_to 'На главную', admin_dashboards_path %></li>
-  <li><%= link_to 'Пользователи', admin_dashboards_path %></li>
-  <li class="<%= is_active?(['admin/roles']) %>"><%= link_to 'Роли и права доступа', admin_roles_path %></li>
-  <li><%= link_to 'Трекеры', admin_dashboards_path %></li>
-  <li><%= link_to 'Статусы задач', admin_dashboards_path %></li>
-  <li><%= link_to 'Списки задач', admin_dashboards_path %></li>
+  <li class="nav-header"><%= t(:admin_panel) %></li>
+  <li><%= link_to t(:home), admin_dashboards_path %></li>
+  <li class="<%= is_active?(['admin/users']) %>"><%= link_to t(:users), admin_users_path %></li>
+  <li class="<%= is_active?(['admin/roles']) %>"><%= link_to t(:roles_and_permissions), admin_roles_path %></li>
+  <li class="<%= is_active?(['admin/trackers']) %>"><%= link_to t(:trackers), admin_trackers_path %></li>
+  <li class="<%= is_active?(['admin/issue_statuses']) %>"><%= link_to t(:issue_statuses), admin_issue_statuses_path %></li>
+  <li><%= link_to t(:issue_lists), admin_dashboards_path %></li>
   <li class="divider"></li>
-  <li><%= link_to 'Настройки', admin_dashboards_path %></li>
+  <li><%= link_to t(:settings), admin_dashboards_path %></li>
 </ul>

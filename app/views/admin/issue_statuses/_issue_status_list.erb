@@ -1,0 +1,14 @@
+<tr>
+  <td><%= issue_status_list.name %></td>
+  <td><i class="<%= 'icon-ok' if issue_status_list.closed? %>"></i></td>
+  <td><i class="<%= 'icon-ok' if issue_status_list.default_value? %>"></i></td>
+  <td>
+    <%= link_to admin_issue_status_path(issue_status_list), method: :delete, confirm: t(:confirm) do %>
+        <i class="icon-trash"></i> <%= t(:delete) %>
+    <% end %>
+    |
+    <%= link_to edit_admin_issue_status_path(issue_status_list) do %>
+        <i class="icon-edit"></i> <%= t(:edit) %>
+    <% end %>
+  </td>
+</tr>

@@ -23,12 +23,6 @@ class Issue < ActiveRecord::Base
   validates :assigned_to, presence: true,
             inclusion: { in: ->(i){ User.joins(projects: :members).where(projects: {id: i.project_id}) }}
 
-  #validates_each :due_date do |record, attr, value|
-   # begin
-   #   Date.parse(value)
-   # rescue
-  #    record.errors.add(attr, "Invalid date")
-  #  end
- # end
+
 
 end

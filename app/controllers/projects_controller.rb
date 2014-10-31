@@ -2,8 +2,10 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate_user!
   before_action :find_project, except: [:index, :new, :create]
+  load_and_authorize_resource
+  before_filter :load_permissions
+  skip_load_resource :only => [:create]
 
-  include ApplicationHelper
   def index
     @projects = Project.parent_projects
   end

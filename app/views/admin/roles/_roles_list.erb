@@ -1,4 +1,12 @@
 <tr>
   <td><%= roles_list.name %></td>
-  <td></td>
+  <td>
+    <%= link_to admin_role_path(roles_list), method: :delete, confirm: t(:confirm) do %>
+    <i class="icon-trash"></i> <%= t(:delete) %>
+    <% end %>
+    |
+    <%= link_to edit_admin_role_path(roles_list) do %>
+        <i class="icon-edit"></i> <%= t(:edit) %>
+    <% end %>
+  </td>
 </tr>

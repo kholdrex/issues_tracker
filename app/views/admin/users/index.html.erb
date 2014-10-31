@@ -1,2 +1,23 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<h2><%= t(:users) %></h2>
+<div class="row">
+  <div class="span9">
+
+    <div id="content-block">
+      <div class="btn-group" id="right">
+        <%= link_to t(:create_user), new_admin_user_path, class: 'btn btn-success' %>
+      </div>
+      <table class="table table-hover">
+        <tr><th><%= t(:name) %></th><th><%= t(:email) %></th><th><%= t(:admin) %></th><th><%= t(:created) %></th><th><%= t(:last_sign_in) %></th><th></th></tr>
+        <%= render partial: 'admin/users/user_list', collection: @users %>
+      </table>
+      <div class="pagination">
+        <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+
+  <div class="span3">
+    <%= render partial: 'admin/shared/admin_menu' %>
+  </div>
+
+</div>

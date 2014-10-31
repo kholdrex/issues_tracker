@@ -1,5 +1,5 @@
 Issues::Application.routes.draw do
-  get "roles/index"
+  get "issue_statuses/index"
   root to: 'home#index'
   devise_for :users
 
@@ -19,6 +19,8 @@ Issues::Application.routes.draw do
     resources :dashboards
     resources :users
     resources :roles
+    resources :trackers
+    resources :issue_statuses
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

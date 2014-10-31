@@ -1,6 +1,8 @@
 class SettingsController < ApplicationController
+  before_filter :authenticate_user!
   before_action :find_project
-  include ApplicationHelper
+  load_and_authorize_resource
+  before_filter :load_permissions
 
   def index
   end
