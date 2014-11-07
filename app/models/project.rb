@@ -1,9 +1,11 @@
 class Project < ActiveRecord::Base
   has_many :subprojects, class_name: 'Project', foreign_key: 'parent_id'
-  belongs_to :parent, class_name: 'Project'
   has_many :issues
   has_many :members
+  belongs_to :parent, class_name: 'Project'
   has_and_belongs_to_many :trackers
+
+
   validates :name, presence: true
 
   scope :parent_projects, -> { where(parent_id: nil) }
@@ -13,8 +15,8 @@ class Project < ActiveRecord::Base
       issue_statuses: { closed: false }
   ) }
 
-  scope :all_issues_with_tracker, ->(p, t) { Issue.where(
-      issues: { project_id: p.id, tracker_id: t.id }
+  scope :all_issues_with_tracker, ->(t) {
+      issues.where(tracker_id: t.id)
   ) }
 
   private
